@@ -3,17 +3,14 @@ package com.wellsfargo.counselor.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "advisors") // Specify the table name
-public class Advisor {
+public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Specify the strategy
-    private Long advisorId; // Use Long instead of long for the ID to allow for null values
+    @GeneratedValue()
+    private long studentId;
 
     @Column(nullable = false)
     private String firstName;
@@ -25,25 +22,25 @@ public class Advisor {
     private String address;
 
     @Column(nullable = false)
-    private String phone;
+    private String phoneNumber;
 
     @Column(nullable = false)
     private String email;
 
-    protected Advisor() {
-
+    protected Student() {
+        // Default constructor required by JPA
     }
 
-    public Advisor(String firstName, String lastName, String address, String phone, String email) {
+    public Student(String firstName, String lastName, String address, String phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.phone = phone;
+        this.phoneNumber = phoneNumber;
         this.email = email;
     }
 
-    public Long getAdvisorId() {
-        return advisorId;
+    public Long getStudentId() {
+        return studentId;
     }
 
     public String getFirstName() {
@@ -70,12 +67,12 @@ public class Advisor {
         this.address = address;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
